@@ -15,4 +15,16 @@ async def ping(ctx):
     await ctx.send(f'Bot Latency : {round(client.latency * 1000)}ms')
 
 
+@client.command()
+async def clear(ctx, amount=5):
+    if amount < 1:
+        await ctx.send("How do you do that?")
+    elif amount == 1:
+        await ctx.channel.purge(limit=amount + 1)
+        await ctx.send(f'Deleted {amount} message!')
+    else:
+        await ctx.channel.purge(limit=amount + 1)
+        await ctx.send(f'Deleted {amount} messages!')
+
+
 client.run(config('SECRET_TOKEN'))
