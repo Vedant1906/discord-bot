@@ -27,4 +27,10 @@ async def clear(ctx, amount=5):
         await ctx.send(f'Deleted {amount} messages!')
 
 
+@clear.error
+async def clear_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Argument is not a number!")
+
+
 client.run(config('SECRET_TOKEN'))
