@@ -33,4 +33,10 @@ async def clear_error(ctx, error):
         await ctx.send("Argument is not a number!")
 
 
+@client.command()
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f'Kicked {member.mention} from Server!\nReason : {reason}')
+
+
 client.run(config('SECRET_TOKEN'))
