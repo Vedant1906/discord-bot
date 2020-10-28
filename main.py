@@ -39,4 +39,10 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await ctx.send(f'Kicked {member.mention} from Server!\nReason : {reason}')
 
 
+@kick.error
+async def kick_error(ctx, error):
+    if isinstance(error, commands.MemberNotFound):
+        await ctx.send("Member not found!")
+
+
 client.run(config('SECRET_TOKEN'))
