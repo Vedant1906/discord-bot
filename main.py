@@ -43,6 +43,10 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def kick_error(ctx, error):
     if isinstance(error, commands.MemberNotFound):
         await ctx.send("Member not found!")
+    elif isinstance(error, commands.CommandInvokeError):
+        await ctx.send("You can't run this task!")
+    else:
+        print(error)
 
 
 client.run(config('SECRET_TOKEN'))
