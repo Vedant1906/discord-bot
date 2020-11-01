@@ -12,7 +12,7 @@ async def on_ready():
 
 
 @client.command()
-async def help(ctx):
+async def help(ctx, *, to='server'):
     embed = discord.Embed(
         title='Ambassador | Help',
         description="run commands by using '/' at prefix",
@@ -21,11 +21,16 @@ async def help(ctx):
     embed.set_thumbnail(
         url='https://cdn.discordapp.com/avatars/766224438513369109/6477b9c304caa29f2124f993c0f0817b.png?size=256')
     embed.add_field(name='help', value='get help about bot in server')
+    embed.add_field(name='help `direct`', value='get help about bot in direct')
     embed.add_field(name='ping', value='get bot latency')
     embed.add_field(name='clear `int`', value='clear messages on server')
     embed.add_field(name='kick `member`', value='kick member out of server', inline=True)
     embed.set_footer(text='https://github.com/harshcut')
-    await ctx.send(embed=embed)
+    if to == 'direct':
+        author = ctx.message.author
+        await discord.User.send(author, embed=embed)
+    elif to == 'server':
+        await ctx.send(embed=embed)
 
 
 @client.command()
