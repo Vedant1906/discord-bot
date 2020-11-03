@@ -39,6 +39,7 @@ async def ping(ctx):
 
 
 @client.command()
+@commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=5):
     if amount < 1:
         await ctx.send("How do you do that?")
@@ -54,9 +55,14 @@ async def clear(ctx, amount=5):
 async def clear_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Argument is not a number!")
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send("You are missing permissions to manage messages.")
+    else:
+        print(error)
 
 
 @client.command()
+@commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     await member.kick(reason=reason)
     await ctx.send(f'Kicked {member.mention} from Server!\nReason : {reason}')
@@ -68,6 +74,8 @@ async def kick_error(ctx, error):
         await ctx.send("Member not found!")
     elif isinstance(error, commands.CommandInvokeError):
         await ctx.send("You can't run this task!")
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send("You are missing permissions to kick members.")
     else:
         print(error)
 
