@@ -81,9 +81,22 @@ async def kick_error(ctx, error):
 
 
 @client.command()
+@commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
     await member.ban(reason=reason)
     await ctx.send(f'Banned {member.mention} from Server!\nReason : {reason}')
+
+
+@ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, commands.MemberNotFound):
+        await ctx.send("Member not found!")
+    elif isinstance(error, commands.CommandInvokeError):
+        await ctx.send("You can't run this task!")
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send("You are missing permissions to ban members.")
+    else:
+        print(error)
 
 
 client.run(config('SECRET_TOKEN'))
