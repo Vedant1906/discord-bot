@@ -111,6 +111,7 @@ async def unban(ctx, *, member):
             await ctx.guild.unban(user)
             await ctx.send(f'Unbanned! {user.mention} can now join server through an invite link.')
             return
+    await ctx.send(f"Can't find `{member}` in banned members!")
 
 
 client.run(config('SECRET_TOKEN'))
