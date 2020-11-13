@@ -24,8 +24,8 @@ async def help(ctx, *, to='server'):
     embed.add_field(name='help `direct`', value='get help about bot in direct')
     embed.add_field(name='ping', value='get bot latency')
     embed.add_field(name='clear `int`', value='clear messages on server')
-    embed.add_field(name='kick `member`', value='kick member out of server', inline=True)
-    embed.add_field(name='ban `member`', value='ban member from server', inline=True)
+    embed.add_field(name='kick `member` `reason`', value='kick member out of server', inline=True)
+    embed.add_field(name='ban `member` `reason`', value='ban member from server', inline=True)
     embed.add_field(name='unban `user#id`', value='unban member for server', inline=True)
     embed.set_footer(text='https://github.com/harshcut')
     if to == 'direct':
