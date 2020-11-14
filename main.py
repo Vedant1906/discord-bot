@@ -114,4 +114,13 @@ async def unban(ctx, *, member):
     await ctx.send(f"Can't find `{member}` in banned members!")
 
 
+@client.command()
+async def get(ctx, server, attribute):
+    if server == 'server':
+        if attribute == 'name':
+            await ctx.send(f'Server Name : `{ctx.guild.name}`')
+        elif attribute == 'id':
+            await ctx.send(f'Server ID : `{ctx.guild.id}`')
+
+
 client.run(config('SECRET_TOKEN'))
