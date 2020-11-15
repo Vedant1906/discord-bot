@@ -121,6 +121,10 @@ async def get(ctx, server, attribute):
             await ctx.send(f'Server Name : `{ctx.guild.name}`')
         elif attribute == 'id':
             await ctx.send(f'Server ID : `{ctx.guild.id}`')
+        elif attribute == 'region':
+            await ctx.send(f'Server Region : `{ctx.guild.region}`')
+        elif attribute == 'count':
+            await ctx.send(f'Server Member Count : `{ctx.guild.member_count}`')
 
 
 client.run(config('SECRET_TOKEN'))
