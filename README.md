@@ -8,17 +8,6 @@ The program is made using Python and other downloadable `pip` modules. We recomm
 
 - [Python 3.8.6 (recommended)](https://www.python.org/downloads/release/python-386/)
 
-## Installation & Usage
-
-To download all the assets onto your local machine, follow the command on a bash terminal. This may require `git-scm` to be installed on your system.
-
-```console
-git clone https://github.com/harshcut/discord-bot.git
-cd discord-bot
-pip install discord.py
-pip install python-decouple
-```
-
 To use this bot in a server, you need a Discord Account. Discord offers an open API to serve requests for both bots and OAuth2 integrations. Create an application on Discord Developer Portal to access your `TOKEN`.
 
 ```bat
@@ -34,7 +23,4 @@ SECRET_TOKEN=SrY2MjR0RET4NTEzMzY5ZTA5.54gQHQ.uxR5Av4peeidM2EXRg_vvTq_Z9I
 
 For more information, visit [Discord Documentation](https://discord.com/developers/docs/intro#bots-and-apps).
 
-## License
-
-```text
 
